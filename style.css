@@ -39,10 +39,10 @@ button {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background-color: #8c53ff;
+    background-color: #8a4fff;
     cursor: pointer;
 }
-buton.hover {
+button.hover {
     transition: 0.25;
-    background-color: #c2a6fc;
+    background-color: #b591fc;
 }
