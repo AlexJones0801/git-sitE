@@ -9,11 +9,11 @@ let gamestate = ["","","","","","","","",""];
 
 const winningMessage = () => `Player ${currentPlayer} has Won!`;
 const drawMessage = () => `Game ended in a draw!`;
-const currentPlayerTurn = () => `It is ${currentPlayer} turn`;
+const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 statusDisplay.innerHTML = currentPlayerTurn();
 
-document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellCLick));
+document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
 document.querySelector('.game-restart').addEventListener('click', handleRestartGame);
 
 function handleCellClick(clickedCellEvent) {
@@ -21,6 +21,7 @@ function handleCellClick(clickedCellEvent) {
         const clickedCellIndex = parseInt(
             clickedCell.getAttribute('data-cell-index')
         );
+
         if (gamestate[clickedCellIndex] !=="" || !gameActive) {
             return;
         }
@@ -48,14 +49,14 @@ function handleCellClick(clickedCellEvent) {
     function handleResultValidation() {
         let roundWon = false;
         for (let i = 0; i <= 7; i++) {
-            const winningCondition = winningConditions[i];
-            let a = gamestate[winningCondition[0]];
-            let b = gamestate[winningCondition[1]];
-            let c = gamestate[winningCondition[2]];
-            if (a == '' || b == '' || c == '') {
+            const winCondition = winningConditions[i];
+            let a = gamestate[winCondition[0]];
+            let b = gamestate[winCondition[1]];
+            let c = gamestate[winCondition[2]];
+            if (a === '' || b === '' || c === '') {
                 continue;
             }
-            if (a == b && b==c) {
+            if (a === b && b===c) {
                 roundWon = true;
                 break
             }
