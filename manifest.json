@@ -1,0 +1,10 @@
+{
+  "name": "Tic Tac Toe",
+  "theme_color": "#000000",
+  "background_color": "#fe7474",
+  "short_name": "TTT",
+  "id": "Alexie",
+  "categories": [
+    "games"
+  ]
+}
