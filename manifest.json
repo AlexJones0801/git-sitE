@@ -4,7 +4,6 @@
   "theme_color": "#000000",
   "background_color": "#fe7474",
   "short_name": "TTT",
-  "id": "Alexie",
   "dir": "ltr",
   "display": "standalone",
   "orientation": "portrait",
@@ -25,10 +24,5 @@
       "url": "https://alexjones0801.github.io/git-sitE/"
     }
   ],
-  "display_override": [
-  "window-controls-overlay",
-  "standalone",
-  "browser"
-]
-
+  "description": "A fun and engaging Tic Tac Toe game to play anytime, anywhere."
 }
