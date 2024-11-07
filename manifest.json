@@ -1,10 +1,34 @@
 {
+  "start_url": "https://alexjones0801.github.io/git-sitE/",
   "name": "Tic Tac Toe",
   "theme_color": "#000000",
   "background_color": "#fe7474",
   "short_name": "TTT",
   "id": "Alexie",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "theinnervoice.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
   "categories": [
     "games"
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Tic Tac Toe",
+      "url": "https://alexjones0801.github.io/git-sitE/"
+    }
+  ],
+  "display_override": [
+  "window-controls-overlay",
+  "standalone",
+  "browser"
+]
+
 }
