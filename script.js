@@ -1,10 +1,6 @@
-
 const statusDisplay = document.querySelector('.game-status');
-
 let gameActive = true;
-
 let currentPlayer = "X";
-
 let gamestate = ["", "", "", "", "", "", "", "", ""];
 
 const winningMessage = () => `Player ${currentPlayer} has Won!`;
@@ -18,9 +14,7 @@ document.querySelector('.game-restart').addEventListener('click', handleRestartG
 
 function handleCellClick(clickedCellEvent) {
     const clickedCell = clickedCellEvent.target;
-    const clickedCellIndex = parseInt(
-        clickedCell.getAttribute('data-cell-index')
-    );
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
 
     if (gamestate[clickedCellIndex] !== "" || !gameActive) {
         return;
@@ -31,7 +25,6 @@ function handleCellClick(clickedCellEvent) {
 }
 
 function handleCellPlayed(clickedCell, clickedCellIndex) {
-
     gamestate[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
 }
@@ -46,24 +39,31 @@ const winningConditions = [
     [0, 4, 8],
     [2, 4, 6],
 ];
+
 function handleResultValidation() {
     let roundWon = false;
+    let winningCombination = [];
+
     for (let i = 0; i <= 7; i++) {
         const winCondition = winningConditions[i];
         let a = gamestate[winCondition[0]];
         let b = gamestate[winCondition[1]];
         let c = gamestate[winCondition[2]];
+
         if (a === '' || b === '' || c === '') {
             continue;
         }
         if (a === b && b === c) {
             roundWon = true;
-            break
+            winningCombination = winCondition;
+            break;
         }
     }
+
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
         gameActive = false;
+        highlightWinningCells(winningCombination);
         return;
     }
 
@@ -87,12 +87,21 @@ function handleRestartGame() {
     currentPlayer = "X";
     gamestate = ["", "", "", "", "", "", "", "", ""];
     statusDisplay.innerHTML = currentPlayerTurn();
-    document.querySelectorAll('.cell')
-        .forEach(cell => cell.innerHTML = "");
+    document.querySelectorAll('.cell').forEach(cell => {
+        cell.innerHTML = "";
+        cell.classList.remove("winning-cell");
+    });
 }
 
+function highlightWinningCells(winningCombination) {
+    winningCombination.forEach(index => {
+        document.querySelectorAll('.cell')[index].classList.add("winning-cell");
+    });
+}
+
+// Optional: Uncomment and update the path if a service worker is set up
 // if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('/sw.js')
+//     navigator.serviceWorker.register('/pwabuilder-adv-sw.js')
 //         .then(() => console.log('Service Worker Registered'))
 //         .catch(error => console.error('Service Worker Registration Failed:', error));
 // }
